@@ -1,0 +1,1 @@
+This is a tutorial project from the Youtube channel 'Web Dev Simplified'.
