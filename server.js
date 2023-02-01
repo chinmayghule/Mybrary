@@ -6,6 +6,7 @@ import expressEjsLayouts from 'express-ejs-layouts';
 import mongoose from 'mongoose';
 import * as url from 'url';
 import { indexRouter } from './routes/index.js';
+import { authorRouter } from './routes/authors.js';
 
 const __dirname = url.fileURLToPath( new URL('.', import.meta.url) );
 
@@ -16,6 +17,7 @@ app.set('views', __dirname + '/views');
 app.set('layout', 'layouts/layout.ejs');
 app.use(expressEjsLayouts);
 app.use(express.static('public'));
+app.use(express.urlencoded({ limit: '10mb', extended: false }));
 
 // connect to database
 mongoose.set('strictQuery', true);
@@ -27,6 +29,7 @@ db.once('open', () => console.log('Connected to Mongoose'));
 
 
 app.use('/', indexRouter);
+app.use('/authors', authorRouter);
 
 
 app.listen(process.env.PORT || 3000, '127.0.0.1');
