@@ -44,7 +44,7 @@ authorRouter.post('/', async (req, res) => {
     } catch (err) {
         res.render('authors/new', {
             author: author,
-            errorMessage: 'Error creating Author'
+            errorMessage: err
         });
     }
 });
